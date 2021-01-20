@@ -20,11 +20,20 @@ class WeatherApp extends Component {
             .catch(err => console.error(err));
     }
     render() {
-        return (
-            <div className="App">
+        const imgSrc = `http://openweathermap.org/img/w/${this.state.icon}.png`;
 
-            </div>
-        );
+        if (this.state.loading) {
+            return <p>Loading</p>;
+        }
+        else {
+            return (
+                <div className="App">
+                    <p>Temperature: {this.state.temp} °C</p>
+                    <p>Description: {this.state.desc}</p>
+                    <img src={imgSrc} alt="Weather icon" />
+                </div>
+            );
+        }
     }
 }
 export default WeatherApp;
